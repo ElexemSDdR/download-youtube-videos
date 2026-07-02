@@ -1,0 +1,7 @@
+USAGE: pnpm download <url> [options]
+
+Options:
+  --help                Show help message and exit
+  --type=...            Type of the download (video or audio)
+  --format=...          Format of the download (mp3, mp4, m4a, wav or webm)
+
