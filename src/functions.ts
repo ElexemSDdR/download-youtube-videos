@@ -24,13 +24,13 @@ const validateParams = (params: Array<string[] | string>): void | 'help' => {
   if (url === '' || !urlRegExp.test(url as string))
     throw new NoUrlError('Enter an url')
 
-  flags
-    ? flags.some((flag) => {
-        if (!possibleFlags.includes(flag.split('=')[0] as string)) {
-          throw new InvalidOptionsError(`${flag} is not a valid option`)
-        }
-      })
-    : null
+  if (flags?.includes('--help' as HelpFlag)) return 'help'
+
+  flags?.some((flag) => {
+    if (!possibleFlags.includes(flag.split('=')[0] as string)) {
+      throw new InvalidOptionsError(`${flag} is not a valid option`)
+    }
+  })
 }
 
 const getSelectedFlagOption = <T extends Option>(
@@ -71,10 +71,10 @@ export const downloadVideo = async ({ url, flags }: DownloadVideoParams) => {
     const validation = validateParams([url, ...(flags ?? '')])
     if (validation === 'help') return showHelpMessage()
 
-    let download
     const { audio, video } = POSSIBLE_OPTIONS.formats
 
-    if (flags) {
+    if (!(flags?.length === 0) && flags) {
+      if (flags.includes('--help' as HelpFlag)) return showHelpMessage()
       const typeFlag = getSelectedFlagOption<TypeOption>(
         flags,
         POSSIBLE_OPTIONS.types,
@@ -102,13 +102,10 @@ export const downloadVideo = async ({ url, flags }: DownloadVideoParams) => {
       }
     }
 
-    return (
-      download ??
-      (await youtubeDl(url, {
-        consoleTitle: true,
-        format: 'mp4',
-      }))
-    )
+    return await youtubeDl(url, {
+      consoleTitle: true,
+      format: 'mp4',
+    })
   } catch (e: any) {
     console.error(e.message)
     return
