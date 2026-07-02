@@ -84,8 +84,6 @@ export const downloadVideo = async ({ url, flags }: DownloadVideoParams) => {
         ...audio,
       ])
 
-      console.log('format', formatFlag, 'type', typeFlag)
-
       if (typeFlag === 'audio' && audio.includes(formatFlag as AudioFormat)) {
         return await youtubeDl(url, {
           consoleTitle: true,
