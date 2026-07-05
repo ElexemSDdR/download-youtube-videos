@@ -4,13 +4,13 @@ import type {
   Flag,
   AudioFormat,
   VideoFormat,
-} from './types/types.js'
-import type { Option, TypeOption, FormatOption } from './types/options.js'
-import { FlagError, InvalidOptionsError, NoUrlError } from './errors.js'
-import { POSSIBLE_OPTIONS, possibleFlags } from './constants.js'
+} from '@/types/types.js'
+import type { Option, TypeOption, FormatOption } from '@/types/options'
+import { FlagError, InvalidOptionsError, NoUrlError } from '@/errors'
+import { POSSIBLE_OPTIONS, possibleFlags } from '@/constants'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import type { HelpFlag } from './types/flags.js'
+import type { HelpFlag } from '@/types/flags'
 
 const __dirname = path.resolve()
 

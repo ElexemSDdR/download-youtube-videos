@@ -1,5 +1,5 @@
-import type { AudioFormat, VideoFormat } from './types/types.js'
-import type { PossibleOption } from './types/options.js'
+import type { AudioFormat, VideoFormat } from '@/types/types.js'
+import type { PossibleOption } from '@/types/options.js'
 
 export const possibleFlags = ['--type', '--format']
 

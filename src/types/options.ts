@@ -1,4 +1,4 @@
-import type { AudioFormat, VideoFormat } from './types.js'
+import type { AudioFormat, VideoFormat } from '@/types/types'
 
 export type TypeOption = 'audio' | 'video'
 
