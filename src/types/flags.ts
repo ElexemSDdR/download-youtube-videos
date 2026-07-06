@@ -1,5 +1,5 @@
-import type { Flag, SingleFlag } from './generics.js'
-import type { FormatOption, TypeOption } from './options.js'
+import type { Flag, SingleFlag } from '@/types/generics'
+import type { FormatOption, TypeOption } from '@/types/options'
 
 export type TypeFlag = Flag<'type', TypeOption>
 

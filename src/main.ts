@@ -1,5 +1,5 @@
-import { downloadVideo } from './functions.js'
-import type { Flag } from './types/types.js'
+import { downloadVideo } from '@/functions.js'
+import type { Flag } from '@/types/types.js'
 
 const argvs = process.argv.slice(2)
 

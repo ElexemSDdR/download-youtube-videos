@@ -1,4 +1,4 @@
-import type { TypeFlag, FormatFlag, HelpFlag } from './flags.js'
+import type { TypeFlag, FormatFlag, HelpFlag } from '@/types/flags.js'
 
 export type Flag = TypeFlag | FormatFlag | HelpFlag
 
