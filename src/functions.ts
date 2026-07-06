@@ -6,7 +6,7 @@ import type {
   VideoFormat,
 } from './types/types.js'
 import type { Option, TypeOption, FormatOption } from './types/options.js'
-import { FlagError, InvalidOptionsError, NoUrlError } from './errors.js'
+import { FlagError, InvalidOptionsError, UrlError } from './errors.js'
 import { POSSIBLE_OPTIONS, possibleFlags } from './constants.js'
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -17,12 +17,11 @@ const __dirname = path.resolve()
 const validateParams = (params: Array<string[] | string>): void | 'help' => {
   const [url] = params
   const flags = params.slice(1).flat() as Flag[]
-  const urlRegExp = /https:\/\//
 
   if (url === '' || url?.includes('--help' as HelpFlag)) return 'help'
 
-  if (url === '' || !urlRegExp.test(url as string))
-    throw new NoUrlError('Enter an url')
+  if (!url![0]?.startsWith('https://youtu.be'))
+    throw new UrlError('Enter a valid url')
 
   if (flags?.includes('--help' as HelpFlag)) return 'help'
 

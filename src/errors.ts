@@ -1,4 +1,4 @@
-export class NoUrlError extends Error {
+export class UrlError extends Error {
   constructor(message: string) {
     super(message)
   }
